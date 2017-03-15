@@ -2,7 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine
+      - image: buildpack-deps:trusty
+        environment:
+          RACK_ENV: CI
     working_directory: ~/service
     steps:
       - checkout
