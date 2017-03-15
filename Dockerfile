@@ -5,7 +5,7 @@ RUN apk update && \
     apk upgrade && \
     apk add ruby ruby-rdoc ruby-libs ruby-irb ruby-bigdecimal ruby-json ruby-io-console ruby-bundler
 
-RUN gem install sinatra
+RUN gem install sinatra --no-ri --no-rdoc
 
 ADD service /srv/service
 WORKDIR /srv/service
