@@ -17,7 +17,8 @@ jobs:
 
       - run: |
           TAG=$(git describe --tags)
-          docker build -t $DOCKER_USER/service_with_hooks:$TAG .
-          docker tag $DOCKER_USER/service_with_hooks:$TAG $DOCKER_USER/service_with_hooks:latest
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push $DOCKER_USER/service_with_hooks:$TAG
+          docker build -t dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:$TAG .
+          docker tag dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:$TAG dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:latest
+          docker login -u $DOCKER_USER -p $DOCKER_PASS dtr.getdropstream.com
+          docker push dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:$TAG
+          
