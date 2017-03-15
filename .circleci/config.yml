@@ -1,1 +1,11 @@
 version: 2
+jobs:
+  build:
+    steps:
+      - checkout
+      - setup_docker_engine
+      - run: |
+          TAG=$(cat service/VERSION).$CIRCLE_BUILD_NUM
+          docker build -t service_with_hooks:$TAG
+          docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+          docker push $DOCKER_USER/service_with_hooks:$TAG
