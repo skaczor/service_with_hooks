@@ -5,6 +5,7 @@ before_install:
   - docker version
 script:
   - TAG=$(git describe --tags)
+  - echo $TAG > service/VERSION
   - docker build -t dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:$TAG .
   - docker tag dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:$TAG dtr.getdropstream.com/$DOCKER_USER/service_with_hooks:latest
   - docker login dtr.getdropstream.com -u $DOCKER_USER -p $DOCKER_PASSWORD
